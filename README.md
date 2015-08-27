@@ -1,2 +1,1 @@
-# demo
-test repository for demo
+This is a sample project for CI demo
