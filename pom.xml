@@ -17,6 +17,22 @@
   <build>
     <plugins>
 <plugin>
+  <groupId>org.codehaus.mojo</groupId>
+  <artifactId>exec-maven-plugin</artifactId>
+  <version>1.6.0</version>
+  <configuration>
+   <executable>docker</executable>
+    <arguments>
+     <argument>build</argument>
+     <argument>-t</argument>
+     <argument>myproject</argument>
+     <argument>-f</argument>
+     <argument>DockerfileSample</argument>
+     <argument>.</argument>
+    </arguments>
+   </configuration>
+</plugin>
+<plugin>
       <groupId>com.spotify</groupId>
       <artifactId>docker-maven-plugin</artifactId>
       <version>1.0.0</version>
