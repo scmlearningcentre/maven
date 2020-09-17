@@ -1,14 +1,26 @@
 pipeline {
     agent any
     stages {
-        stage('Example') {
-           steps { bat "exit 1" }
-        }
-    }
-    post { 
-	failure {
-	   mail body: 'Hi Adam', subject: 'The Pipeline failed', to: 'scmlearningcentre@gmail.com'
-        }
-    }
+        stage('Compile Stage') {
+		  steps {
+		      withMaven(maven : 'maven') {
+                 sh 'mvn clean compile'
+				 }
+				}
+			  }
+		stage('testing Stage') {
+		  steps {
+		      withMaven(maven : 'maven') {
+                 sh 'mvn test'
+				 }
+				}
+			  }
+		stage('Deploy Stage') {
+		  steps {
+		      withMaven(maven : 'maven') {
+                 sh 'mvn deploy'
+				 }
+			}
+		}
+	}
 }
-
