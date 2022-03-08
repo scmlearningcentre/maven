@@ -1,0 +1,62 @@
+pipeline {
+	agent any
+		parameters {
+			activeChoiceParam('APPID') {
+				description('Select your choice')
+				choiceType('SINGLE_SELECT')
+				groovyScript {
+					script("return['-Select-','AMZ','APL']")
+					fallbackScript('return["error"])
+				}
+			}
+			activeChoiceReactiveParam('Namespaces') {
+				description('Select a Namespace')
+				choiceType('SINGLE_SELECT')
+				groovyScript {
+					switch(APPID) {
+						case "-Select-":
+						return 0
+						break
+						case "AMZ":
+						return ["-Select-",'AMZ-prod-atom','AMZ-preprod-atom']
+						break
+						case "APL":
+						return ["-Select-",'APL-prod-atom','APL-preprod-atom']
+						break
+					}
+					fallbackScript('return["error'])
+				}
+				referencedParameter("APPID")
+			}
+			activeChoiceReactiveParam('Services') {
+				description('Select your choice')
+				choiceType('SINGLE_SELECT')
+				groovyScript {
+					if (APPID.equals("AMZ") && Namespaces.equals("AMZ-prod-atom") || APPID.equals("AMZ") && Namespaces.equals("AMZ-preprod-atom")) {
+					return ['atom-Orders','atom-Profile','atom-Payments','atom-Settings']
+					} else if (APPID.equals("APL") && Namespaces.equals("APL-prod-atom") || APPID.equals("APL") && Namespaces.equals("APL-preprod-atom")){
+					return ['atom-Device','atom-Network','atom-Siri']
+					}
+					fallbackScript('return["error"])
+				}
+				referencedParameter('Namespaces','APPID')
+			}
+			choice(choices:'us-east-1\nus-west-2',description:'Select Region',name:'Region')
+			string(defaultValue: 'Master',description: 'Enter user id',name:'Userid')
+			password(defaultValue:"******",description:'Enter Password',name:'Password')
+			choice(choices:'Create\nDelete',description:'Select Action','name:'Action')
+		}
+		stages {
+			stage ("K8s") {
+				steps {
+					echo "${params.APPID}"
+					echo "${params.Namespaces}"
+					echo "${params.Services}"
+					echo "${params.Region}"
+					echo "${params.Userid}"
+					echo "${params.Password}"
+					echo "${params.Action}"
+				}
+			}
+		}
+	}
