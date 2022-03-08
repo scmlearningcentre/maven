@@ -35,7 +35,7 @@ pipeline {
 					if (APPID.equals("AMZ") && Namespaces.equals("AMZ-prod-atom") || APPID.equals("AMZ") && Namespaces.equals("AMZ-preprod-atom")) {
 					return ['atom-Orders','atom-Profile','atom-Payments','atom-Settings']
 					} else if (APPID.equals("APL") && Namespaces.equals("APL-prod-atom") || APPID.equals("APL") && Namespaces.equals("APL-preprod-atom")){
-					return ['atom-Device','atom-Network','atom-Siri']
+					return ['atom-Mobile','atom-Network','atom-Siri']
 					}
 					fallbackScript('return["error"])
 				}
