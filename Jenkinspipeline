@@ -6,7 +6,7 @@ pipeline {
 				choiceType('SINGLE_SELECT')
 				groovyScript {
 					script("return['-Select-','AMZ','APL']")
-					fallbackScript('return["error"])
+					fallbackScript('return["error"]')
 				}
 			}
 			activeChoiceReactiveParam('Namespaces') {
@@ -24,7 +24,7 @@ pipeline {
 						return ["-Select-",'APL-prod-atom','APL-preprod-atom']
 						break
 					}
-					fallbackScript('return["error'])
+					fallbackScript('return["error']')
 				}
 				referencedParameter("APPID")
 			}
