@@ -1,3 +1,2 @@
-This is a sample project for CI demo by Vamshi
-: March 5 :
-New line
+This is a sample project for CI demo by Subhan
+: MARCH 09 :
