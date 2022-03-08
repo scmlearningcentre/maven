@@ -44,7 +44,7 @@ pipeline {
 			choice(choices:'us-east-1\nus-west-2',description:'Select Region',name:'Region')
 			string(defaultValue: 'Master',description: 'Enter user id',name:'Userid')
 			password(defaultValue:"******",description:'Enter Password',name:'Password')
-			choice(choices:'Create\nDelete',description:'Select Action','name:'Action')
+			choice(choices:'Create\nDelete',description:'Select Action',name:'Action')
 		}
 		stages {
 			stage ("K8s") {
