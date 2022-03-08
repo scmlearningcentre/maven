@@ -34,14 +34,14 @@ pipeline {
 				groovyScript {
 					if (APPID.equals("AMZ") && Namespaces.equals("AMZ-prod-atom") || APPID.equals("AMZ") && Namespaces.equals("AMZ-preprod-atom")) {
 					return ['atom-Orders','atom-Profile','atom-Payments','atom-Settings']
-<<<<<<< HEAD
+
 					} else if (APPID.equals("APL") && Namespaces.equals("APL-prod-atom") || APPID.equals("APL") && Namespaces.equals("APL-preprod-atom")){
 					return ['atom-Mobile','atom-Network','atom-Siri']
-=======
+
 					} 
 					else if (APPID.equals("APL") && Namespaces.equals("APL-prod-atom") || APPID.equals("APL") && Namespaces.equals("APL-preprod-atom")){
 					return ['atom-Device','atom-Network','atom-Siri']
->>>>>>> 5b1ddcf5cf2e9b581bb25ed6cf94b1c85d67da6e
+
 					}
 					fallbackScript('return["error"]')
 				}
