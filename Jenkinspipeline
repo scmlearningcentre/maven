@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 		parameters {
-			activeChoiceParam('APPID'){
+			activeChoiceParam ('APPID') {
 				description('Select your choice')
 				choiceType('SINGLE_SELECT')
 				groovyScript {
@@ -9,7 +9,7 @@ pipeline {
 					fallbackScript('return["error"]')
 				}
 			}
-			activeChoiceReactiveParam('Namespaces'){
+			activeChoiceReactiveParam ('Namespaces') {
 				description('Select a Namespace')
 				choiceType('SINGLE_SELECT')
 				groovyScript {
@@ -28,7 +28,7 @@ pipeline {
 				}
 				referencedParameter("APPID")
 			}
-			activeChoiceReactiveParam('Services'){
+			activeChoiceReactiveParam ('Services') {
 				description('Select your choice')
 				choiceType('SINGLE_SELECT')
 				groovyScript {
