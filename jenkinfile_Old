@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('BMW') {
-           steps { bat "exit 1" }
+           steps { bat "exit 2" }
         }
     }
     post { 
