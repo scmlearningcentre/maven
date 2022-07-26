@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Maserati') {
+        stage('Merc') {
            steps { bat "exit 2" }
         }
     }
