@@ -1,2 +1,2 @@
-This is a sample project for CI demo by Subhan
-: MARCH 09 :
+This is a sample project for CI demo by Kp
+: JULY 26 :
