@@ -31,9 +31,9 @@ pipeline {
                 echo "Code is being built"
 				}
 		    }
-		stage("Package the code") {
+		stage("Test the code") {
 			steps {
-                echo "build is being packaged"
+                echo "build is being tested"
 				}
             }
         stage("Deploy the code") {
