@@ -1,0 +1,49 @@
+pipeline {
+    agent {label 'SOCGEN'}
+
+    parameters {
+        // booleanParam, choice, file, text, password, run, or string
+        booleanParam(defaultValue: false, description: 'Select to deploy', name: 'deploy')
+        string(defaultValue: "Kp", description: 'Enter your username', name: 'username')
+        password(defaultValue: "Password", description: "Enter your password", name: "password")
+        text(defaultValue: "This is a multiline\n text", description: "Multiline Text", name: "businessjust")
+        choice(choices: 'US-EAST-1\nUS-WEST-2', description: 'Select a region', name: 'region')
+            } 
+
+    stages {
+        stage("GIT Clone") {
+            steps {
+                echo "Cloning a new repository"
+                script {
+                    git credentialsId: '9ec017b3-ece3-48e8-a3e0-f59f68492da1', url: 'https://github.com/KhajaParvez/maven.git'
+                    }
+                }
+				
+			}
+		stage("Code Compile") {
+			steps {
+                echo "username: ${params.username}"
+                echo "Code compilation is being done"
+				}
+			}
+		stage("Code Build") {
+			steps {
+                echo "Code is being built"
+				}
+		    }
+		stage("Package the code") {
+			steps {
+                echo "build is being packaged"
+				}
+            }
+        stage("Deploy the code") {
+			steps {
+                echo "deploy: ${params.deploy}"
+                echo "region: ${params.region}"
+                echo "businessjust: ${params.businessjust}"
+                echo "Code is being deployed"
+				}
+            }
+        }
+    }
+
