@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'SOCGEN'}
+    agent any
 
     parameters {
         // booleanParam, choice, file, text, password, run, or string
