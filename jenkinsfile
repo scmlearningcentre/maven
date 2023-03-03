@@ -11,7 +11,7 @@ pipeline {
             } 
 
     stages {
-        stage("GIT Clone") {
+        stage("GIT Clone by Raj") {
             steps {
                 echo "Cloning a new repository"
                 script {
@@ -20,7 +20,7 @@ pipeline {
                 }
 				
 			}
-		stage("Code Compile") {
+		stage("Package by Raj") {
 			steps {
                 echo "username: ${params.username}"
                 echo "Code compilation is being done"
@@ -31,12 +31,12 @@ pipeline {
                 echo "Code is being built"
 				}
 		    }
-		stage("Test the code") {
+		stage("Code test by Raj") {
 			steps {
                 echo "build is being tested"
 				}
             }
-        stage("Deploy the code") {
+        stage("Deploy by Raj") {
 			steps {
                 echo "deploy: ${params.deploy}"
                 echo "region: ${params.region}"
